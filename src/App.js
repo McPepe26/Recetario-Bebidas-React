@@ -1,26 +1,27 @@
 import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import Header from './Components/Header';
+import Formulario from './Components/Formulario';
+import CategoriasProvider from './Context/CategoriasContext';
+import RecetasProvider from './Context/RecetasContext';
+import ListaRecetas from './Components/ListaRecetas';
+import ModalProvider from './Context/ModalContext';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	return (
+		<CategoriasProvider>
+			<RecetasProvider>
+				<ModalProvider>
+					<Header/>
+					<div className="container mt-5">
+						<div className="row">
+							<Formulario/>
+						</div>
+						<ListaRecetas/>
+					</div>
+				</ModalProvider>
+			</RecetasProvider>
+		</CategoriasProvider>
+	);
 }
 
 export default App;
